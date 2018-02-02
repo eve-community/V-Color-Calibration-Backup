@@ -15,7 +15,7 @@ Developed in Powershell 5.0 (script may run in other versions)
 To install, simply download or clone the repository and run the script. 
 
 ```
-./VColorProfileBackup.ps1
+.\VColorProfileBackup.ps1
 ```
 
 If you receive a warning regarding execution policy you may need to change policy to something less restrictive.
