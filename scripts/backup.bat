@@ -1,1 +1,0 @@
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0/BackupVColorProfile.ps1" -Verb RunAs
