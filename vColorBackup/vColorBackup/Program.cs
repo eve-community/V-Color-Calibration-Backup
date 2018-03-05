@@ -30,7 +30,7 @@ namespace vColorBackup
         static public void backup()
         {
             String calmanPath = @"C:\ProgramData\SpectraCal\CalMAN Client 3\";
-            if(!Directory.Exists(calmanPath))
+            if (!Directory.Exists(calmanPath))
             {
                 MessageBox.Show("CalMAN folder missing, client probably not installed. Failed to retreive database.", "Backup Error");
                 return;
@@ -47,19 +47,17 @@ namespace vColorBackup
                     desiredPath = dialog.FileName;
                 }
             }
-            Console.WriteLine(desiredPath);
-            String savePath = Path.GetFileName(desiredPath);
-            String iccPath = Path.Combine(savePath, "iccProfiles");
-            String dbPath = Path.Combine(savePath, "cailmanDatabase");
+
+            String savePath = Path.ChangeExtension(desiredPath, null);
+            savePath += @"\";
 
 
             //https://stackoverflow.com/questions/58744/copy-the-entire-contents-of-a-directory-in-c-sharp
             //Now Create all of the directories
-            if(!Directory.Exists(savePath))
+            if (!Directory.Exists(savePath))
                 Directory.CreateDirectory(savePath);
-            foreach (string dirPath in Directory.GetDirectories(calmanPath, "*", SearchOption.AllDirectories))
-                if (!Directory.Exists(savePath))
-                    Directory.CreateDirectory(dirPath.Replace(calmanPath, savePath));
+                foreach (string dirPath in Directory.GetDirectories(calmanPath, "*", SearchOption.AllDirectories))
+                        Directory.CreateDirectory(dirPath.Replace(calmanPath, savePath));
 
             //Copy all the files & Replaces any files with the same name
             foreach (string newPath in Directory.GetFiles(calmanPath, "*.*",
@@ -71,7 +69,7 @@ namespace vColorBackup
 
         static public void restore()
         {
-            String calmanPath = @"C:\ProgramData\SpectraCal\CalMAN Client 3\";
+            String calmanPath = @"C:\ProgramData\SpectraCal\CalMAN Client 3";
             if (!Directory.Exists(calmanPath))
             {
                 MessageBox.Show("CalMAN folder missing, client probably not installed.", "Restore Error");
@@ -89,12 +87,14 @@ namespace vColorBackup
                     archivePath = dialog.FileName;
                 }
             }
-            Console.WriteLine(archivePath);
-            String folderPath = Path.GetFileName(archivePath);
+
+            String folderPath = Path.ChangeExtension(archivePath, null);
             ZipFile.ExtractToDirectory(archivePath, folderPath);
+            
             foreach (string newPath in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
                 File.Copy(newPath, newPath.Replace(folderPath, calmanPath), true);
             Directory.Delete(folderPath, true);
+            MessageBox.Show("CalMAN Data restore complete", "Restore Complete");
         }
     }
 }

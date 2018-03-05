@@ -16,6 +16,7 @@ namespace vColorBackup
         public Form1()
         {
             InitializeComponent();
+            this.Text = "V Calman Backup Tool";
         }
 
         private void Form1_Load(object sender, EventArgs e)

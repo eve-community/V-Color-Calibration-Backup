@@ -1,20 +1,27 @@
 # V-Color-Calibration-Backup
-Scripts to aid in backuping up the color calibration of the EVE V. Currently the scripts to generate a zip archive with the icc profiles and CalMAN database, or can restore a zip backup made by the backup script onto the V.
+A client or scripts to aid in backuping up the color calibration of the EVE V. Currently the scripts and client generate a zip archive with the icc profiles and CalMAN database, or can restore a zip backup made by the backup script onto the V.
 
 ## Getting Started
 ### Prerequisites
 ```
-Powershell 5.0
-CalMan Client Software
+CalMan Client 3 Software installed
+.Net framework 4.5-4.6
+
+OR
+
+Powershell 4.0+ (to run the scripts)
 ```
 
-### Installing
+### Building the exe
 
-To install, simply download or clone the repository and run the backup script. A restoration script is also now included to restore backup zips on the local machine.
+To build, simply download or clone the repository and build from the Visual Studio solution (2017 was used for development).
 
-## Use
+## Use (application)
+Simple run vColorBackup.exe, and select whether you'd like to backup or restore your configuration.
 
-To Back up, either right click on the batch file and click 'Run as Administrator', or open a command prompt/powershell in the downloaded directory and run:
+## Use (scripts)
+
+To Back up, go the scripts folder and either right click on the batch file and click 'Run as Administrator', or open a command prompt/powershell in the downloaded directory and run:
 ```
 .\backup.bat
 ```
@@ -33,7 +40,7 @@ The restoration script will ask you to select your .zip backup and will replace 
 
 ## Authors
 
-* **Matt Hehn** - *Initial Script* - [mjhehn](https://github.com/mjhehn) on GitHub, [Ranth](https://eve.community/u/Ranth) on eve.community
+* **Matt Hehn** - *Initial Script and client* - [mjhehn](https://github.com/mjhehn) on GitHub, [Ranth](https://eve.community/u/Ranth) on eve.community
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
